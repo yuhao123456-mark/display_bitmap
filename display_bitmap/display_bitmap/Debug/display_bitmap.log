@@ -1,0 +1,4 @@
+﻿  display_bitmap.c
+D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\display_bitmap\resource\display_bitmap.c(32,46): warning C4013: “string_length_get”未定义；假设外部返回 int
+D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\display_bitmap\resource\display_bitmap.c(38,1): warning C4142: "string_length_get": 类型的良性重定义
+  display_bitmap.vcxproj -> D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\Debug\display_bitmap.exe
