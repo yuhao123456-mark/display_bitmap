@@ -1,4 +1,7 @@
 ﻿  display_bitmap.c
-D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\display_bitmap\resource\display_bitmap.c(32,46): warning C4013: “string_length_get”未定义；假设外部返回 int
-D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\display_bitmap\resource\display_bitmap.c(38,1): warning C4142: "string_length_get": 类型的良性重定义
+D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\display_bitmap\resource\display_bitmap.c(55,12): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“GX_ICON_BUTTON”
+D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\display_bitmap\resource\display_bitmap.c(60,34): warning C4133: “函数”: 从“GX_WINDOW *”到“GX_WIDGET *”的类型不兼容
+D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\display_bitmap\resource\display_bitmap.c(73,29): warning C4013: “_gx_widget_shift”未定义；假设外部返回 int
+D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\display_bitmap\resource\display_bitmap.c(52,26): warning C4101: “current_button”: 未引用的局部变量
+D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\display_bitmap\resource\display_bitmap.c(117,32): warning C4133: “函数”: 从“GX_WINDOW_ROOT *”到“GX_WIDGET *”的类型不兼容
   display_bitmap.vcxproj -> D:\核桃\项目文件\2020.9.3\display_bitmap\display_bitmap\Debug\display_bitmap.exe

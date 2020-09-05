@@ -6,7 +6,7 @@
 /*  GUIX Studio User Guide, or visit our web site at azure.com/rtos            */
 /*                                                                             */
 /*  GUIX Studio Revision 6.0.2.0                                               */
-/*  Date (dd.mm.yyyy):  4. 9.2020   Time (hh:mm): 14:18                        */
+/*  Date (dd.mm.yyyy):  5. 9.2020   Time (hh:mm): 18:56                        */
 /*******************************************************************************/
 
 
@@ -22,7 +22,33 @@ extern   "C" {
 
 /* Define widget ids                                                           */
 
-#define IDC_BUTTON 1
+#define IDC_VERSION_NUMBER_67x67 1
+#define IDC_STYLE_SWITCH_67x67 2
+#define IDC_ECG_67x67 3
+#define IDC_STOPWATCH_67x67 4
+#define IDC_Contact_PERSON_67x67 5
+#define IDC_QR_CODE_67x67 6
+#define IDC_CALL_RECORDS_67x67 7
+#define IDC_TAKE_PICTURES_67x67 8
+#define IDC_DIAL_67x67 9
+#define IDC_BLOOD_OXYGEN_67x67 10
+#define IDC_METRONOME_67x67 11
+#define IDC_FIND_PHONE_67x67 12
+#define IDC_BLOOD_PROESSURE_67x67 13
+#define IDC_CENTER_TABLE_67x67 14
+#define IDC_RUN_67x67 15
+#define IDC_DIMMING_67x67 16
+#define IDC_SOS_67x67 17
+#define IDC_NEWS_67x67 18
+#define IDC_HEART_RATE_67x67 19
+#define IDC_THE_WEATHER_67x67 20
+#define IDC_SHUTDOWN_67x67 21
+#define IDC_MUSIC_67x67 22
+#define IDC_SLEEP_67x67 23
+#define IDC_RELAX_67x67 24
+#define IDC_RESET_67x67 25
+#define IDC_NATIONAL_LANGUAGE_67x67 26
+#define IDC_INCOMING_CALL_SETTINGS_67x67 27
 
 
 /* Define animation ids                                                        */
@@ -69,10 +95,8 @@ typedef struct
 
 typedef struct
 {
-    GX_RESOURCE_ID normal_pixelmap_id;
-    GX_RESOURCE_ID selected_pixelmap_id;
-    GX_RESOURCE_ID disabled_pixelmap_id;
-} GX_PIXELMAP_BUTTON_PROPERTIES;
+    GX_RESOURCE_ID pixelmap_id;
+} GX_ICON_BUTTON_PROPERTIES;
 
 typedef struct
 {
@@ -85,7 +109,34 @@ typedef struct
 typedef struct WINDOW_CONTROL_BLOCK_STRUCT
 {
     GX_WINDOW_MEMBERS_DECLARE
-    GX_PIXELMAP_BUTTON window_pixelmap_button;
+    GX_WINDOW window_canvas;
+    GX_ICON_BUTTON window_IDC_VERSION_NUMBER_67x67;
+    GX_ICON_BUTTON window_IDC_STYLE_SWITCH_67x67;
+    GX_ICON_BUTTON window_IDC_ECG_67x67;
+    GX_ICON_BUTTON window_IDC_STOPWATCH_67x67;
+    GX_ICON_BUTTON window_IDC_Contact_PERSON_67x67;
+    GX_ICON_BUTTON window_IDC_QR_CODE_67x67;
+    GX_ICON_BUTTON window_IDC_CALL_RECORDS_67x67;
+    GX_ICON_BUTTON window_IDC_TAKE_PICTURES_67x67;
+    GX_ICON_BUTTON window_IDC_DIAL_67x67;
+    GX_ICON_BUTTON window_IDC_BLOOD_OXYGEN_67x67;
+    GX_ICON_BUTTON window_IDC_METRONOME_67x67;
+    GX_ICON_BUTTON window_IDC_FIND_PHONE_67x67;
+    GX_ICON_BUTTON window_IDC_BLOOD_PROESSURE_67x67;
+    GX_ICON_BUTTON window_IDC_CENTER_TABLE_67x67;
+    GX_ICON_BUTTON window_IDC_RUN_67x67;
+    GX_ICON_BUTTON window_IDC_DIMMING_67x67;
+    GX_ICON_BUTTON window_IDC_SOS_67x67;
+    GX_ICON_BUTTON window_IDC_NEWS_67x67;
+    GX_ICON_BUTTON window_IDC_HEART_RATE_67x67;
+    GX_ICON_BUTTON window_IDC_THE_WEATHER_67x67;
+    GX_ICON_BUTTON window_IDC_SHUTDOWN_67x67;
+    GX_ICON_BUTTON window_IDC_MUSIC_67x67;
+    GX_ICON_BUTTON window_IDC_SLEEP_67x67;
+    GX_ICON_BUTTON window_IDC_RELAX_67x67;
+    GX_ICON_BUTTON window_IDC_RESET_67x67;
+    GX_ICON_BUTTON window_IDC_NATIONAL_LANGUAGE_67x67;
+    GX_ICON_BUTTON window_IDC_INCOMING_CALL_SETTINGS_67x67;
 } WINDOW_CONTROL_BLOCK;
 
 
@@ -97,7 +148,8 @@ extern WINDOW_CONTROL_BLOCK window;
 
 /* Declare event process functions, draw functions, and callback functions     */
 
-VOID custom_pixelmap_button_draw(GX_PIXELMAP_BUTTON *widget);
+UINT canvas_event_handler(GX_WINDOW *widget, GX_EVENT *event_ptr);
+VOID custom_pixelmap_button_draw(GX_ICON_BUTTON *widget);
 
 /* Declare the GX_STUDIO_DISPLAY_INFO structure                                */
 
@@ -123,7 +175,7 @@ typedef struct GX_STUDIO_DISPLAY_INFO_STRUCT
 
 /* Declare Studio-generated functions for creating top-level widgets           */
 
-UINT gx_studio_pixelmap_button_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
+UINT gx_studio_icon_button_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
 UINT gx_studio_window_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent);
 GX_WIDGET *gx_studio_widget_create(GX_BYTE *storage, GX_CONST GX_STUDIO_WIDGET *definition, GX_WIDGET *parent);
 UINT gx_studio_named_widget_create(char *name, GX_WIDGET *parent, GX_WIDGET **new_widget);

@@ -6,7 +6,7 @@
 /*  GUIX Studio User Guide, or visit our web site at azure.com/rtos            */
 /*                                                                             */
 /*  GUIX Studio Revision 6.0.2.0                                               */
-/*  Date (dd.mm.yyyy):  4. 9.2020   Time (hh:mm): 14:18                        */
+/*  Date (dd.mm.yyyy):  5. 9.2020   Time (hh:mm): 18:56                        */
 /*******************************************************************************/
 
 
@@ -20,7 +20,7 @@ WINDOW_CONTROL_BLOCK window;
 GX_DISPLAY display_1_control_block;
 GX_WINDOW_ROOT display_1_root_window;
 GX_CANVAS  display_1_canvas_control_block;
-ULONG      display_1_canvas_memory[240000];
+ULONG      display_1_canvas_memory[95250];
 
 extern GX_CONST GX_THEME *display_1_theme_table[];
 extern GX_CONST GX_STRING *display_1_language_table[];
@@ -35,27 +35,23 @@ GX_STUDIO_DISPLAY_INFO display_bitmap_display_table[1] =
     DISPLAY_1_THEME_TABLE_SIZE,
     DISPLAY_1_LANGUAGE_TABLE_SIZE,
     DISPLAY_1_STRING_TABLE_SIZE,
-    800,                                     /* x resolution                   */
-    600,                                     /* y resolution                   */
+    381,                                     /* x resolution                   */
+    500,                                     /* y resolution                   */
     &display_1_control_block,
     &display_1_canvas_control_block,
     &display_1_root_window,
     display_1_canvas_memory,                 /* canvas memory area             */
-    960000                                   /* canvas memory size in bytes    */
+    381000                                   /* canvas memory size in bytes    */
     }
 };
 
 
-UINT gx_studio_pixelmap_button_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent)
+UINT gx_studio_icon_button_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control_block, GX_WIDGET *parent)
 {
     UINT status;
-    GX_PIXELMAP_BUTTON *button = (GX_PIXELMAP_BUTTON *) control_block;
-    GX_PIXELMAP_BUTTON_PROPERTIES *props = (GX_PIXELMAP_BUTTON_PROPERTIES *) info->properties;
-    status = gx_pixelmap_button_create(button, info->widget_name, parent,
-               props->normal_pixelmap_id,
-               props->selected_pixelmap_id,
-               props->disabled_pixelmap_id,
-               info->style, info->widget_id, &info->size);
+    GX_ICON_BUTTON *button = (GX_ICON_BUTTON *) control_block;
+    GX_ICON_BUTTON_PROPERTIES *props = (GX_ICON_BUTTON_PROPERTIES *) info->properties;
+    status = gx_icon_button_create(button, info->widget_name, parent, props->pixelmap_id, info->style, info->widget_id, &info->size);
     return status;
 }
 
@@ -76,37 +72,791 @@ UINT gx_studio_window_create(GX_CONST GX_STUDIO_WIDGET *info, GX_WIDGET *control
 }
 GX_WINDOW_PROPERTIES window_properties =
 {
-    GX_PIXELMAP_ID_MENU_TEXT_2               /* wallpaper pixelmap id          */
+    0                                        /* wallpaper pixelmap id          */
 };
-GX_PIXELMAP_BUTTON_PROPERTIES window_pixelmap_button_properties =
+GX_WINDOW_PROPERTIES window_canvas_properties =
 {
-    0,                                       /* normal pixelmap id             */
-    0,                                       /* selected pixelmap id           */
-    0                                        /* disabled pixelmap id           */
+    0                                        /* wallpaper pixelmap id          */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_VERSION_NUMBER_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_VERSION_NUMBER      /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_STYLE_SWITCH_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_STYLE_SWITCH        /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_ECG_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_ECG                 /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_STOPWATCH_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_STOPWATCH           /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_Contact_PERSON_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_CONTACT_PERSON      /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_QR_CODE_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_QR_CODE             /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_CALL_RECORDS_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_CALL_RECORDS        /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_TAKE_PICTURES_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_TAKE_PICTURES       /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_DIAL_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_DIAL                /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_BLOOD_OXYGEN_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_BLOOD_OXYGEN        /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_METRONOME_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_METRONOME           /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_FIND_PHONE_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_FIND_PHONE          /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_BLOOD_PROESSURE_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_BLOOD_PRESSURE      /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_CENTER_TABLE_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_CENTER_TABLE        /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_RUN_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_RUN                 /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_DIMMING_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_DIMMING             /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_SOS_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_SOS                 /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_NEWS_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_NEWS                /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_HEART_RATE_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_HEART_RATE          /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_THE_WEATHER_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_THE_WEATHER         /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_SHUTDOWN_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_SHUTDOWN            /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_MUSIC_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_MUSIC               /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_SLEEP_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_SLEEP               /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_RELAX_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_RELAX               /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_RESET_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_RESET               /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_NATIONAL_LANGUAGE_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_NATIONAL_LANGUAGE   /* pixelmap id                    */
+};
+GX_ICON_BUTTON_PROPERTIES window_IDC_INCOMING_CALL_SETTINGS_67x67_properties =
+{
+    GX_PIXELMAP_ID_ICON3_INCOMING_CALL_SETTINGS  /* pixelmap id                */
 };
 
-GX_CONST GX_STUDIO_WIDGET window_pixelmap_button_define =
+GX_CONST GX_STUDIO_WIDGET window_IDC_INCOMING_CALL_SETTINGS_67x67_define =
 {
-    "pixelmap_button",
-    GX_TYPE_PIXELMAP_BUTTON,                 /* widget type                    */
-    IDC_BUTTON,                              /* widget id                      */
+    "IDC_INCOMING_CALL_SETTINGS_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_INCOMING_CALL_SETTINGS_67x67,        /* widget id                      */
     #if defined(GX_WIDGET_USER_DATA)
     0,                                       /* user data                      */
     #endif
-    GX_STYLE_BORDER_NONE|GX_STYLE_ENABLED,   /* style flags                    */
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
     GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
-    sizeof(GX_PIXELMAP_BUTTON),              /* control block size             */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
     GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
     GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
     GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
-    gx_studio_pixelmap_button_create,        /* create function                */
+    gx_studio_icon_button_create,            /* create function                */
     (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
     GX_NULL,                                 /* event function override        */
-    {360, 288, 439, 311},                    /* widget size                    */
+    {230, 432, 296, 498},                    /* widget size                    */
     GX_NULL,                                 /* no next widget                 */
     GX_NULL,                                 /* no child widgets               */ 
-    offsetof(WINDOW_CONTROL_BLOCK, window_pixelmap_button), /* control block   */
-    (void *) &window_pixelmap_button_properties /* extended properties         */
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_INCOMING_CALL_SETTINGS_67x67), /* control block */
+    (void *) &window_IDC_INCOMING_CALL_SETTINGS_67x67_properties /* extended properties */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_NATIONAL_LANGUAGE_67x67_define =
+{
+    "IDC_NATIONAL_LANGUAGE_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_NATIONAL_LANGUAGE_67x67,             /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {96, 432, 162, 498},                     /* widget size                    */
+    &window_IDC_INCOMING_CALL_SETTINGS_67x67_define, /* next widget definition */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_NATIONAL_LANGUAGE_67x67), /* control block */
+    (void *) &window_IDC_NATIONAL_LANGUAGE_67x67_properties /* extended properties */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_RESET_67x67_define =
+{
+    "IDC_RESET_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_RESET_67x67,                         /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {314, 358, 380, 424},                    /* widget size                    */
+    &window_IDC_NATIONAL_LANGUAGE_67x67_define, /* next widget definition      */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_RESET_67x67), /* control block   */
+    (void *) &window_IDC_RESET_67x67_properties /* extended properties         */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_RELAX_67x67_define =
+{
+    "IDC_RELAX_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_RELAX_67x67,                         /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {241, 359, 307, 425},                    /* widget size                    */
+    &window_IDC_RESET_67x67_define,          /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_RELAX_67x67), /* control block   */
+    (void *) &window_IDC_RELAX_67x67_properties /* extended properties         */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_SLEEP_67x67_define =
+{
+    "IDC_SLEEP_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_SLEEP_67x67,                         /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {163, 376, 229, 442},                    /* widget size                    */
+    &window_IDC_RELAX_67x67_define,          /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_SLEEP_67x67), /* control block   */
+    (void *) &window_IDC_SLEEP_67x67_properties /* extended properties         */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_MUSIC_67x67_define =
+{
+    "IDC_MUSIC_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_MUSIC_67x67,                         /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {85, 359, 151, 425},                     /* widget size                    */
+    &window_IDC_SLEEP_67x67_define,          /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_MUSIC_67x67), /* control block   */
+    (void *) &window_IDC_MUSIC_67x67_properties /* extended properties         */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_SHUTDOWN_67x67_define =
+{
+    "IDC_SHUTDOWN_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_SHUTDOWN_67x67,                      /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {12, 358, 78, 424},                      /* widget size                    */
+    &window_IDC_MUSIC_67x67_define,          /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_SHUTDOWN_67x67), /* control block */
+    (void *) &window_IDC_SHUTDOWN_67x67_properties /* extended properties      */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_THE_WEATHER_67x67_define =
+{
+    "IDC_THE_WEATHER_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_THE_WEATHER_67x67,                   /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {285, 287, 351, 353},                    /* widget size                    */
+    &window_IDC_SHUTDOWN_67x67_define,       /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_THE_WEATHER_67x67), /* control block */
+    (void *) &window_IDC_THE_WEATHER_67x67_properties /* extended properties   */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_HEART_RATE_67x67_define =
+{
+    "IDC_HEART_RATE_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_HEART_RATE_67x67,                    /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {197, 287, 263, 353},                    /* widget size                    */
+    &window_IDC_THE_WEATHER_67x67_define,    /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_HEART_RATE_67x67), /* control block */
+    (void *) &window_IDC_HEART_RATE_67x67_properties /* extended properties    */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_NEWS_67x67_define =
+{
+    "IDC_NEWS_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_NEWS_67x67,                          /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {118, 287, 184, 353},                    /* widget size                    */
+    &window_IDC_HEART_RATE_67x67_define,     /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_NEWS_67x67), /* control block    */
+    (void *) &window_IDC_NEWS_67x67_properties /* extended properties          */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_SOS_67x67_define =
+{
+    "IDC_SOS_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_SOS_67x67,                           /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {32, 287, 98, 353},                      /* widget size                    */
+    &window_IDC_NEWS_67x67_define,           /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_SOS_67x67), /* control block     */
+    (void *) &window_IDC_SOS_67x67_properties /* extended properties           */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_DIMMING_67x67_define =
+{
+    "IDC_DIMMING_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_DIMMING_67x67,                       /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {313, 216, 379, 282},                    /* widget size                    */
+    &window_IDC_SOS_67x67_define,            /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_DIMMING_67x67), /* control block */
+    (void *) &window_IDC_DIMMING_67x67_properties /* extended properties       */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_RUN_67x67_define =
+{
+    "IDC_RUN_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_RUN_67x67,                           /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {230, 216, 296, 282},                    /* widget size                    */
+    &window_IDC_DIMMING_67x67_define,        /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_RUN_67x67), /* control block     */
+    (void *) &window_IDC_RUN_67x67_properties /* extended properties           */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_CENTER_TABLE_67x67_define =
+{
+    "IDC_CENTER_TABLE_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_CENTER_TABLE_67x67,                  /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {159, 216, 225, 282},                    /* widget size                    */
+    &window_IDC_RUN_67x67_define,            /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_CENTER_TABLE_67x67), /* control block */
+    (void *) &window_IDC_CENTER_TABLE_67x67_properties /* extended properties  */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_BLOOD_PROESSURE_67x67_define =
+{
+    "IDC_BLOOD_PROESSURE_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_BLOOD_PROESSURE_67x67,               /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {83, 216, 149, 282},                     /* widget size                    */
+    &window_IDC_CENTER_TABLE_67x67_define,   /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_BLOOD_PROESSURE_67x67), /* control block */
+    (void *) &window_IDC_BLOOD_PROESSURE_67x67_properties /* extended properties */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_FIND_PHONE_67x67_define =
+{
+    "IDC_FIND_PHONE_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_FIND_PHONE_67x67,                    /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {0, 216, 66, 282},                       /* widget size                    */
+    &window_IDC_BLOOD_PROESSURE_67x67_define, /* next widget definition        */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_FIND_PHONE_67x67), /* control block */
+    (void *) &window_IDC_FIND_PHONE_67x67_properties /* extended properties    */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_METRONOME_67x67_define =
+{
+    "IDC_METRONOME_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_METRONOME_67x67,                     /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {280, 145, 346, 211},                    /* widget size                    */
+    &window_IDC_FIND_PHONE_67x67_define,     /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_METRONOME_67x67), /* control block */
+    (void *) &window_IDC_METRONOME_67x67_properties /* extended properties     */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_BLOOD_OXYGEN_67x67_define =
+{
+    "IDC_BLOOD_OXYGEN_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_BLOOD_OXYGEN_67x67,                  /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {197, 145, 263, 211},                    /* widget size                    */
+    &window_IDC_METRONOME_67x67_define,      /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_BLOOD_OXYGEN_67x67), /* control block */
+    (void *) &window_IDC_BLOOD_OXYGEN_67x67_properties /* extended properties  */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_DIAL_67x67_define =
+{
+    "IDC_DIAL_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_DIAL_67x67,                          /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {119, 144, 185, 210},                    /* widget size                    */
+    &window_IDC_BLOOD_OXYGEN_67x67_define,   /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_DIAL_67x67), /* control block    */
+    (void *) &window_IDC_DIAL_67x67_properties /* extended properties          */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_TAKE_PICTURES_67x67_define =
+{
+    "IDC_TAKE_PICTURES_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_TAKE_PICTURES_67x67,                 /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {36, 144, 102, 210},                     /* widget size                    */
+    &window_IDC_DIAL_67x67_define,           /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_TAKE_PICTURES_67x67), /* control block */
+    (void *) &window_IDC_TAKE_PICTURES_67x67_properties /* extended properties */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_CALL_RECORDS_67x67_define =
+{
+    "IDC_CALL_RECORDS_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_CALL_RECORDS_67x67,                  /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {312, 74, 378, 140},                     /* widget size                    */
+    &window_IDC_TAKE_PICTURES_67x67_define,  /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_CALL_RECORDS_67x67), /* control block */
+    (void *) &window_IDC_CALL_RECORDS_67x67_properties /* extended properties  */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_QR_CODE_67x67_define =
+{
+    "IDC_QR_CODE_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_QR_CODE_67x67,                       /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {239, 74, 305, 140},                     /* widget size                    */
+    &window_IDC_CALL_RECORDS_67x67_define,   /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_QR_CODE_67x67), /* control block */
+    (void *) &window_IDC_QR_CODE_67x67_properties /* extended properties       */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_Contact_PERSON_67x67_define =
+{
+    "IDC_Contact_PERSON_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_Contact_PERSON_67x67,                /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {161, 57, 227, 123},                     /* widget size                    */
+    &window_IDC_QR_CODE_67x67_define,        /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_Contact_PERSON_67x67), /* control block */
+    (void *) &window_IDC_Contact_PERSON_67x67_properties /* extended properties */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_STOPWATCH_67x67_define =
+{
+    "IDC_STOPWATCH_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_STOPWATCH_67x67,                     /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {81, 73, 147, 139},                      /* widget size                    */
+    &window_IDC_Contact_PERSON_67x67_define, /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_STOPWATCH_67x67), /* control block */
+    (void *) &window_IDC_STOPWATCH_67x67_properties /* extended properties     */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_ECG_67x67_define =
+{
+    "IDC_ECG_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_ECG_67x67,                           /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {8, 73, 74, 139},                        /* widget size                    */
+    &window_IDC_STOPWATCH_67x67_define,      /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_ECG_67x67), /* control block     */
+    (void *) &window_IDC_ECG_67x67_properties /* extended properties           */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_STYLE_SWITCH_67x67_define =
+{
+    "IDC_STYLE_SWITCH_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_STYLE_SWITCH_67x67,                  /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {228, 1, 294, 67},                       /* widget size                    */
+    &window_IDC_ECG_67x67_define,            /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_STYLE_SWITCH_67x67), /* control block */
+    (void *) &window_IDC_STYLE_SWITCH_67x67_properties /* extended properties  */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_IDC_VERSION_NUMBER_67x67_define =
+{
+    "IDC_VERSION_NUMBER_67x67",
+    GX_TYPE_ICON_BUTTON,                     /* widget type                    */
+    IDC_VERSION_NUMBER_67x67,                /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_RAISED|GX_STYLE_TRANSPARENT|GX_STYLE_ENABLED|GX_STYLE_HALIGN_CENTER|GX_STYLE_VALIGN_CENTER,   /* style flags */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_ICON_BUTTON),                  /* control block size             */
+    GX_COLOR_ID_BTN_LOWER,                   /* normal color id                */
+    GX_COLOR_ID_BTN_UPPER,                   /* selected color id              */
+    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    gx_studio_icon_button_create,            /* create function                */
+    (VOID (*)(GX_WIDGET *)) custom_pixelmap_button_draw, /* drawing function override */
+    GX_NULL,                                 /* event function override        */
+    {94, 1, 160, 67},                        /* widget size                    */
+    &window_IDC_STYLE_SWITCH_67x67_define,   /* next widget definition         */
+    GX_NULL,                                 /* no child widgets               */ 
+    offsetof(WINDOW_CONTROL_BLOCK, window_IDC_VERSION_NUMBER_67x67), /* control block */
+    (void *) &window_IDC_VERSION_NUMBER_67x67_properties /* extended properties */
+};
+
+GX_CONST GX_STUDIO_WIDGET window_canvas_define =
+{
+    "canvas",
+    GX_TYPE_WINDOW,                          /* widget type                    */
+    GX_ID_NONE,                              /* widget id                      */
+    #if defined(GX_WIDGET_USER_DATA)
+    0,                                       /* user data                      */
+    #endif
+    GX_STYLE_BORDER_NONE,                    /* style flags                    */
+    GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
+    sizeof(GX_WINDOW),                       /* control block size             */
+    GX_COLOR_ID_CANVAS,                      /* normal color id                */
+    GX_COLOR_ID_CANVAS,                      /* selected color id              */
+    GX_COLOR_ID_CANVAS,                      /* disabled color id              */
+    gx_studio_window_create,                 /* create function                */
+    GX_NULL,                                 /* drawing function override      */
+    (UINT (*)(GX_WIDGET *, GX_EVENT *)) canvas_event_handler, /* event function override */
+    {0, 0, 380, 499},                        /* widget size                    */
+    GX_NULL,                                 /* no next widget                 */
+    &window_IDC_VERSION_NUMBER_67x67_define, /* child widget definition        */
+    offsetof(WINDOW_CONTROL_BLOCK, window_canvas), /* control block            */
+    (void *) &window_canvas_properties       /* extended properties            */
 };
 
 GX_CONST GX_STUDIO_WIDGET window_define =
@@ -117,18 +867,18 @@ GX_CONST GX_STUDIO_WIDGET window_define =
     #if defined(GX_WIDGET_USER_DATA)
     0,                                       /* user data                      */
     #endif
-    GX_STYLE_BORDER_THIN|GX_STYLE_ENABLED,   /* style flags                    */
+    GX_STYLE_BORDER_NONE,                    /* style flags                    */
     GX_STATUS_ACCEPTS_FOCUS,                 /* status flags                   */
     sizeof(WINDOW_CONTROL_BLOCK),            /* control block size             */
-    GX_COLOR_ID_WINDOW_FILL,                 /* normal color id                */
-    GX_COLOR_ID_WINDOW_FILL,                 /* selected color id              */
-    GX_COLOR_ID_DISABLED_FILL,               /* disabled color id              */
+    GX_COLOR_ID_BTN_TEXT,                    /* normal color id                */
+    GX_COLOR_ID_CANVAS,                      /* selected color id              */
+    GX_COLOR_ID_TEXT,                        /* disabled color id              */
     gx_studio_window_create,                 /* create function                */
     GX_NULL,                                 /* drawing function override      */
     GX_NULL,                                 /* event function override        */
-    {0, 0, 799, 599},                        /* widget size                    */
+    {0, 0, 380, 499},                        /* widget size                    */
     GX_NULL,                                 /* next widget                    */
-    &window_pixelmap_button_define,          /* child widget                   */
+    &window_canvas_define,                   /* child widget                   */
     0,                                       /* control block                  */
     (void *) &window_properties              /* extended properties            */
 };
